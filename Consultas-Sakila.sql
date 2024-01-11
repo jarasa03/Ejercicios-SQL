@@ -29,3 +29,26 @@ select city from city where country_id = 61;
 /* select city from city where country = 'Spain'; */
 select city from city where country_id = (select country_id from country where country = 'Spain');
 
+/* 11. Ciudades con nombres compuestos. */
+select city from city where city like '% %';
+
+/* 12. Películas con una duración entre 80 y 100. */
+select title from film where length between 80 AND 100;
+
+/* 13. Películas con un rental_rate entre 1 y 3. */
+select title from film where rental_rate between 1 AND 3;
+
+/* 14. Películas con un título de más de 12. */
+select title from film where length(title) > 12;
+
+/* 15. Películas con un rating de PG o G. */
+select title from film where rating like 'PG' OR rating like 'G';
+
+/* 16. Películas que no tengan un rating de NC-17. */
+select title from film where rating NOT LIKE 'NC-17';
+
+/* 17. Películas con un rating PG y duracion de más de 120. */
+select title from film where rating like 'PG' AND length > 120;
+
+/* 18. ¿Cuantos actores hay? */
+/* select length(actor_id) from film_actor */
