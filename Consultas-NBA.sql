@@ -19,3 +19,15 @@ select e.puntos_por_partido from estadisticas e join jugadores j on j.Nombre_equ
 /* 7.- Jugadores cuya 3ª letra de su nombre es una ‘v’ */
 select j.nombre from jugadores j where j.nombre like '__v%';
 
+/* 8.- Cuántos jugadores tiene cada equipo de la conferencia Oeste */
+select j.nombre_equipo, count(j.nombre) from jugadores j group by j.nombre_equipo;
+
+/* 9.- Cuantos jugadores argentinos juegan en la NBA */
+select j.procedencia, count(j.procedencia) as número from jugadores j where procedencia like 'Argentina' group by j.procedencia;
+
+/* 10.- En qué temporada Lebron James consiguió más puntos por partido */
+SELECT e.temporada FROM estadisticas e WHERE e.jugador = (SELECT j.codigo FROM jugadores j WHERE j.Nombre = 'Lebron James')
+GROUP BY e.temporada ORDER BY MAX(e.Puntos_por_partido) DESC LIMIT 1;
+
+/* 11.- Asistencias por partido de Jose Calderón en la temporada 07/08 */
+select 
